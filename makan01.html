@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Untuk Kamu 💌</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #dbeafe);
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 35px 25px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      margin: 25px 0;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      margin: 12px 0;
+      border: 2px solid #eee;
+      border-radius: 16px;
+      background: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      background: #fff0f6;
+      border-color: #f48fb1;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
+    .submit {
+      width: 100%;
+      padding: 16px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 16px;
+      background: #e91e63;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: #c2185b;
+    }
+
+    /* Halaman berhasil */
+    #success {
+      display: none;
+    }
+
+    .check {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: #e91e63;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 42px;
+      animation: muncul 0.6s ease;
+    }
+
+    .success-title {
+      font-size: 27px;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    .success-text {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @keyframes muncul {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- FORM -->
+    <div id="formPage">
+
+      <h1>Hai 👋</h1>
+
+      <div class="question">
+        Kamu udah makan belum?
+      </div>
+
+      <form
+        id="myForm"
+        action="https://formsubmit.co/pendukungpastra@gmail.com"
+        method="POST"
+        target="hiddenFrame"
+      >
+
+        <input
+          type="hidden"
+          name="_subject"
+          value="Ada Jawaban Baru 💌"
+        >
+
+        <input
+          type="hidden"
+          name="_captcha"
+          value="false"
+        >
+
+        <label class="option">
+          <input
+            type="radio"
+            name="Jawaban"
+            value="Sudah"
+            required
+          >
+          Sudah 🍚
+        </label>
+
+        <label class="option">
+          <input
+            type="radio"
+            name="Jawaban"
+            value="Belum"
+          >
+          Belum 😭
+        </label>
+
+        <button
+          class="submit"
+          type="submit"
+          onclick="kirimJawaban()"
+        >
+          Kirim Jawaban 💌
+        </button>
+
+      </form>
+
+      <!-- Tempat pengiriman tanpa membuka halaman baru -->
+      <iframe
+        name="hiddenFrame"
+        style="display:none;"
+      ></iframe>
+
+    </div>
+
+
+    <!-- HALAMAN BERHASIL -->
+    <div id="success">
+
+      <div class="check">
+        ✓
+      </div>
+
+      <div class="success-title">
+        Jawaban Berhasil Dikirim 💌
+      </div>
+
+      <div class="success-text">
+        Terima kasih sudah menjawab 😊
+        <br>
+        Jawabanmu sudah diterima.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function kirimJawaban() {
+
+      const form = document.getElementById("myForm");
+
+      // Pastikan sudah memilih jawaban
+      if (!form.checkValidity()) {
+        return;
+      }
+
+      // Tunggu sebentar agar FormSubmit menerima data
+      setTimeout(function() {
+
+        document.getElementById("formPage").style.display = "none";
+
+        document.getElementById("success").style.display = "block";
+
+      }, 700);
+
+    }
+
+  </script>
+
+</body>
+</html>
